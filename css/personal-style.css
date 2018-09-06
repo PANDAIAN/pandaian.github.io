@@ -1,0 +1,13 @@
+.category-box .category-title {
+    font-size: 13px;
+    line-height: 40px;
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 40px;
+    margin-top: -20px;
+    text-align: center;
+    color: #555;
+    border-radius: 20px;
+    background: #f0f0f0;
+}
