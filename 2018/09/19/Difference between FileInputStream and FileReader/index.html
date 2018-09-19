@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Writing in front of posts | pandaian</title>
+  <title>Difference between FileInputStream and FileReader | pandaian</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,18 +15,18 @@
     <meta name="keywords" content="diary," />
   
 
-  <meta name="description" content="Writing in front of posts Writing some words in front of all.  In fact,this is my first technical blog,first English blog also. At the present time,I have konwn that learning English is pretty importa">
+  <meta name="description" content="InputStream VS Reader  Before going to explain specific difference between FileInputStream and FileReader in Java, I would like to state fundamental difference between an InputStream and a Reader in">
 <meta name="keywords" content="diary">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Writing in front of posts">
-<meta property="og:url" content="https://i.pandaian.com/2018/09/08/Writing-in-front-of-posts/index.html">
+<meta property="og:title" content="Difference between FileInputStream and FileReader">
+<meta property="og:url" content="https://i.pandaian.com/2018/09/19/Difference between FileInputStream and FileReader/index.html">
 <meta property="og:site_name" content="pandaian">
-<meta property="og:description" content="Writing in front of posts Writing some words in front of all.  In fact,this is my first technical blog,first English blog also. At the present time,I have konwn that learning English is pretty importa">
+<meta property="og:description" content="InputStream VS Reader  Before going to explain specific difference between FileInputStream and FileReader in Java, I would like to state fundamental difference between an InputStream and a Reader in">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-16T09:25:11.602Z">
+<meta property="og:updated_time" content="2018-09-19T08:09:28.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Writing in front of posts">
-<meta name="twitter:description" content="Writing in front of posts Writing some words in front of all.  In fact,this is my first technical blog,first English blog also. At the present time,I have konwn that learning English is pretty importa">
+<meta name="twitter:title" content="Difference between FileInputStream and FileReader">
+<meta name="twitter:description" content="InputStream VS Reader  Before going to explain specific difference between FileInputStream and FileReader in Java, I would like to state fundamental difference between an InputStream and a Reader in">
 
   
 
@@ -156,22 +156,17 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Writing-in-front-of-posts"><span class="toc-text">Writing in front of posts</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-Writing-in-front-of-posts" class="article article-type-post" itemprop="blogPost">
+   <article id="post-Difference between FileInputStream and FileReader" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">Writing in front of posts</h1>
+    <h1 class="post-title">Difference between FileInputStream and FileReader</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2018.09.08</span>
+        <span>2018.09.19</span>
       </span>
 
       
@@ -182,12 +177,17 @@
       
 
       
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </span>
+
 
 
       
         <span>
           <i class="icon-comment"></i>
-          <a href="https://i.pandaian.com/2018/09/08/Writing-in-front-of-posts/#disqus_thread"></a>
+          <a href="https://i.pandaian.com/2018/09/19/Difference between FileInputStream and FileReader/#disqus_thread"></a>
         </span>
       
 
@@ -204,11 +204,13 @@
 
   <div class="article-content">
     
-      <h1 id="Writing-in-front-of-posts"><a href="#Writing-in-front-of-posts" class="headerlink" title="Writing in front of posts"></a>Writing in front of posts</h1><blockquote>
-<p>Writing some words in front of all.</p>
+      <blockquote>
+<p>InputStream VS Reader</p>
 </blockquote>
-<p>In fact,this is my first technical blog,first English blog also. At the present time,I have konwn that learning English is pretty important to us.What a pity is I do not take the opportunity to learn it at those wonderful school time. I learn it again now, although I don’t know it is too late or no effect to start to learn. Also this is why I will wrote it in English.</p>
-<p>Time always gone too fast. In 2014, I ask myself when I will have graduated from school to step into the society.2018? Too long for me. but in the blink of an eye, now is four years later, I’m still the same as the man that I was in four years before. No ability no money no anything.Ha, gotten carried away.I’m a man with a unhealth psychology that often fear greater than danger.<br>Just believe the wisdom that working without words and making a fortune. 闷声大发财.<br>Have a good trip, man.</p>
+<p>Before going to explain specific difference between <strong>FileInputStream</strong> and <strong>FileReader</strong> in Java, I would like to state fundamental difference between an <strong>InputStream</strong> and a <strong>Reader</strong> in Java, and when to use InputStream and when to go for Reader. Actually, Both InputStream and Reader are abstractions to read data from source, which can be either file or socket, but main difference between them is, InputStream is used to read binary data, while Reader is used to read text data, precisely Unicode characters. So what is difference between binary and text data? well everything you read is essentially bytes, but to convert a byte to text, you need a character encoding scheme. Reader classes uses character encoding to decode bytes and return characters to caller.</p>
+<p>Reader can either use default character encoding of platform on which your Java program is running or accept a Charset object or name of character encoding in String format e.g. “UTF-8”. Despite being one of the simplest concept, lots of Java developers make mistakes of not specifying character encoding, while reading text files or text data from socket.</p>
+<p>Remember, if you don’t specify correct encoding, or your program is not using character encoding already present in protocol e.g. encoding specified in “Content-Type” for HTML files and encoding presents in header of XML files, you may not read all data correctly. Some characters which are not present in default encoding, may come up as ? or little square.</p>
+<p>Once you know this fundamental difference between stream and reader, understanding difference between FileInputStream and FileReader is quite easy. Both allows you to read data from File, but FileInputStream is used to read binary data, while FileReader is used to read character data.</p>
 
     
   </div>
@@ -220,10 +222,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018/09/06/hello-world/">
+    <a class="show pull-left" href="/2018/09/08/Writing-in-front-of-posts/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/09/19/Difference between FileInputStream and FileReader/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -352,7 +354,7 @@
   <script>
     var disqus_shortname = 'pandaian';
     
-    var disqus_url = 'https://i.pandaian.com/2018/09/08/Writing-in-front-of-posts/';
+    var disqus_url = 'https://i.pandaian.com/2018/09/19/Difference between FileInputStream and FileReader/';
     
     (function(){
       var dsq = document.createElement('script');
