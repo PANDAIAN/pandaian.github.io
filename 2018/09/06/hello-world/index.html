@@ -408,7 +408,10 @@
   }
 
   window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
+    loadScript('/js/bundle.js', function() {
+      // load success
+    });
+	loadScript('/js/hello.js', function() {
       // load success
     });
   }
