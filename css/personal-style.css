@@ -46,3 +46,6 @@ html.page-home {
     color: #ddd;
 	}
 }
+.page-header .breadcrumb{
+	background-color:white;
+}
