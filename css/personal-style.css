@@ -17,7 +17,7 @@ html, body{background-color:#ffffff;}
 }
 .box-prev-next a.show {
     display: block !important;
-    margin-top: 50px;
+    margin: 50px 20px;
 }
 .box-prev-next a.show {
     display: block !important;
