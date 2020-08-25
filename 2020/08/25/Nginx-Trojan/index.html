@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-archives">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | pandaian</title>
+  <title>trojan and nginx to using web service | pandaian</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,13 +15,17 @@
     <meta name="keywords" content="pandaian,熊猫君,熊猫君的博客" />
   
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="pandaian">
-<meta property="og:url" content="https://xmj.ch/archives/page/2/index.html">
+  <meta name="description" content="Using trojan+nginx reachs that pretending a normal website to be a proxy service  first of all， we should know that the trojan forwards the all unknown packets to the remote port， the default remote">
+<meta property="og:type" content="article">
+<meta property="og:title" content="trojan and nginx to using web service">
+<meta property="og:url" content="https://xmj.ch/2020/08/25/Nginx-Trojan/index.html">
 <meta property="og:site_name" content="pandaian">
+<meta property="og:description" content="Using trojan+nginx reachs that pretending a normal website to be a proxy service  first of all， we should know that the trojan forwards the all unknown packets to the remote port， the default remote">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-08-25T14:39:40.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pandaian">
+<meta name="twitter:title" content="trojan and nginx to using web service">
+<meta name="twitter:description" content="Using trojan+nginx reachs that pretending a normal website to be a proxy service  first of all， we should know that the trojan forwards the all unknown packets to the remote port， the default remote">
 
   
 
@@ -57,17 +61,8 @@
     <span id="toolbox-mobile" class="toolbox-mobile">Box</span>
   
 
-  <div class="content content-archive">
-  <div class="page-header">
-
-  
-    <div class="breadcrumb">
-      <div class="location">Blog</div>
-      <i class="icon-location"></i>
-    </div>
-  
-
-  
+  <div class="post-header CENTER">
+   
   <div class="toolbox">
     <a class="toolbox-entry" href="/">
       <span class="toolbox-entry-text">Box</span>
@@ -146,69 +141,87 @@
   </div>
 
 
-
-  <div class="box-blog-info">
-    <a class="avatar" href="/">
-      <img src="/images/avatar.jpg" alt="" />
-    </a>
-    <div class="info">
-      <h3 class="name" style="font-family: calligraffittiregular">
-        pandaian
-      </h3>
-      <div class="slogan">
-        Closing eyes, working, running.
-      </div>
-    </div>
-  </div>
-
 </div>
 
 
-  <div class="post-list-box archive-body">
-    <ul class="list-post">  <li class="item-year item item-title item-title-3">
-    <a href="/archives/2018" class="text-year">
-      2018
-      <i class="icon-gou"></i>
+
+
+<div class="content content-post CENTER">
+   <article id="post-Nginx-Trojan" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">trojan and nginx to using web service</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.08.25</span>
+      </span>
+
       
-    </a>
-  </li>
-<li class="item-post item">
-  <span class="post-date">09-08</span>
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>pandaian</span>
+        </span>
+      
 
-  
-  <a class="post-title" href="/2018/09/08/Writing-in-front-of-posts/">Writing in front of posts</a>
-
-
-</li>
-<li class="item-post item">
-  <span class="post-date">09-06</span>
-
-  
-  <a class="post-title" href="/2018/09/06/hello-world/">Hello World</a>
+      
 
 
-</li>
-</ul>
-  </div>
+      
 
-  <div class="archive-footer">
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>&nbsp Views
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
     
-  <div class="pagination">
-    <nav class="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="icon-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+      <p><strong> Using trojan+nginx reachs that pretending a normal website to be a proxy service </strong></p>
+<p>first of all， we should know that the trojan forwards the all unknown packets to the remote port， the default remote port is 80. It’s a nice design for us to setting the environment.</p>
+<p>if(packets is trojan)<br>{ do proxy service}<br>else<br>{ forwarding packets to port 80 }</p>
+<p>so, it’s easy to achieve it that we just configure the web server.<br>My web server is using Nginx, the fllowing is configuration which I have configured.</p>
+<p>configuration file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">   listen 0.0.0.0:80;</span><br><span class="line">   listen [::]:80;</span><br><span class="line">   server_name _;</span><br><span class="line">   return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>The first server is listening port 80 from all IP address. Its mission is redirecting all request to port 443(https).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 127.0.0.1:80;</span><br><span class="line">    server_name _ www.example.com; #example domain</span><br><span class="line">    access_log /data/wwwlogs/access_nginx.log combined;</span><br><span class="line">    root /data/wwwroot/default;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    #error_page 404 /404.html;</span><br><span class="line">    #error_page 502 /502.html;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>The second is listening localhost port 80, this server is accepting packets from trojan which is true https packets.</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/08/24/Oneinstack_update_ssl/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
   </div>
 
 
-  </div>
+
+
+
+   
+      <div class="git"></div>
+   
 </div>
 
 
   <a id="backTop" class="back-top">
     <i class="icon-angle-up"></i>
   </a>
-
-
 
 
 
@@ -296,6 +309,22 @@
 </div>
 
 
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
 
   
 
