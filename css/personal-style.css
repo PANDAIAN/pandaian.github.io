@@ -46,3 +46,10 @@ html.page-home {
     color: #ddd;
 	}
 }
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
